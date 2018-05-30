@@ -5,6 +5,9 @@ Stasm is a C++ software library for finding features in faces.
 For more information, visit http://www.milbo.users.sonic.net/stasm/
 """
 
+# To test locally: python setup.py install
+# To upload to pypi: python setup.py sdist bdist_wheel upload
+
 DOCLINES = __doc__.split('\n')
 
 import sys
@@ -63,8 +66,8 @@ class stasm_build_ext(build_ext):
         self.include_dirs.append(numpy.get_include())
 
 metadata = dict(
-        name='PyStasm',
-        version='0.3.2',
+        name='stasm',
+        version='0.0.5',
         author='Matthew Szczepankiewicz',
         author_email='mjszczep@buffalo.edu',
 	ext_modules=[
@@ -103,8 +106,7 @@ metadata = dict(
             ],
         install_requires=[
             'numpy>=1.7',
-            ##'opencv' # Specify this if possible but I don't think it is.
-            ],
+        ],
 )
 
 if using_setuptools:

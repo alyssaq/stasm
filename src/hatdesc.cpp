@@ -9,18 +9,21 @@
 #define CACHE 1   // define to 0 if your compiler doesn't support unordered_map
                   // Stasm runs faster if 1
 #if CACHE
-  // Try really hard to get unordered_map without requiring C++11
-  #ifdef _MSC_VER // microsoft
-    #include <unordered_map>
+    // Try really hard to get unordered_map without requiring C++11
+    #ifdef _MSC_VER // microsoft
+        #include <unordered_map>
     #if _MSC_VER >= 1600
-      using namespace std;
+        using namespace std;
     #else
-      using namespace std::tr1;
+        using namespace std::tr1;
     #endif
-  #else          // assume gcc
-    #include <tr1/unordered_map>
-    using namespace std::tr1;
-  #endif
+    #elif __llvm__ // Apple
+        #include <unordered_map>
+        using namespace std;
+    #else          // assume gcc
+        #include <tr1/unordered_map>
+        using namespace std::tr1;
+    #endif
 #endif
 
 namespace stasm
