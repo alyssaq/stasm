@@ -80,7 +80,7 @@ const char* PyArray_to_image(
 	return img_data;
 }
 
-static const char init_doc[] = 
+static const char init_doc[] =
 "init(datadir=stasm.DATADIR, trace=False) -> None\n"
 "\n"
 "Initialize Stasm.\n"
@@ -89,7 +89,7 @@ static const char init_doc[] =
 "    datadir: Path to directory containing Haar cascade XML files.\n"
 "    trace: Set to True to trace to stdout and stasm.log for debugging.\n";
 
-static PyObject* Py_init(            
+static PyObject* Py_init(
 	PyObject*	self,
 	PyObject*	args,
 	PyObject*	kwargs)
@@ -119,7 +119,7 @@ static PyObject* Py_init(
 	Py_RETURN_NONE;
 }
 
-static const char open_image_doc[] = 
+static const char open_image_doc[] =
 "open_image(image, debugpath=\"\", multiface=False, minwidth=10) -> None\n"
 "\n"
 "Load an image for processing with Stasm.\n"
@@ -255,6 +255,8 @@ static PyObject* Py_search_single(
 		delete[] landmarks;
 		return NULL;
 	}
+
+	stasm_force_points_into_image(landmarks, width, height);
 
 	int landmarks_found = foundface ? stasm_NLANDMARKS : 0;
 	return landmarks_to_PyArray(landmarks, landmarks_found);
@@ -436,7 +438,7 @@ static PyObject* Py_convert_shape(
 	return retArray;
 }
 
-static const char module_doc[] = 
+static const char module_doc[] =
 "Python wrapper for finding features in faces.\n"
 "\n"
 "Stasm is a C++ software library for finding features in faces.\n"

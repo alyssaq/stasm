@@ -66,47 +66,43 @@ class stasm_build_ext(build_ext):
         self.include_dirs.append(numpy.get_include())
 
 metadata = dict(
-        name='stasm',
-        version='0.0.5',
-        author='Matthew Szczepankiewicz',
-        author_email='mjszczep@buffalo.edu',
+    name='stasm',
+    version='1.0.0',
+    author='Matthew Szczepankiewicz',
+    author_email='mjszczep@buffalo.edu',
 	ext_modules=[
-            Extension('stasm._stasm',
-                      sources = recursive_glob('src', '*.cpp'),
-                      depends = recursive_glob('src', '*.h'),
-                      libraries = cv_libs,
-                      language = 'C++',
-                      )
-            ],
-        headers=recursive_glob('src', '*.h') + recursive_glob('src', '*.mh'),
-        cmdclass={'build_ext': stasm_build_ext},
-        packages=['stasm'],
-        package_data={'stasm' : ['LICENSE.txt', os.path.join('data','*.*')]},
-        include_package_data=True,
-        url='http://github.com/mjszczep/PyStasm',
-        license='Simplified BSD',
-        description=DOCLINES[0],
-        long_description='\n'.join(DOCLINES[2:]),
-        platforms=['Linux', 'Windows'],
-        classifiers=[
-            'Programming Language :: C++',
-            'Programming Language :: Python :: 2',
-            'Programming Language :: Python :: 3',
-            'Operating System :: Microsoft :: Windows',
-            'Operating System :: Unix',
-            'Topic :: Software Development :: Libraries',
-            'Topic :: Scientific/Engineering :: Image Recognition',
-            'Intended Audience :: Developers',
-            'Intended Audience :: Science/Research',
-            'Development Status :: 3 - Alpha',
-            'License :: OSI Approved :: BSD License',
-            ],
-        setup_requires=[
-            'numpy>=1.7'
-            ],
-        install_requires=[
-            'numpy>=1.7',
-        ],
+        Extension('_stasm',
+            sources = recursive_glob('src', '*.cpp'),
+            depends = recursive_glob('src', '*.h'),
+            libraries = cv_libs,
+            language = 'C++',
+        )
+    ],
+    headers=recursive_glob('src', '*.h') + recursive_glob('src', '*.mh'),
+    cmdclass={'build_ext': stasm_build_ext},
+    packages=['stasm'],
+    package_data={'stasm' : ['LICENSE.txt', os.path.join('data','*.*')]},
+    include_package_data=True,
+    url='http://github.com/mjszczep/PyStasm',
+    license='Simplified BSD',
+    description=DOCLINES[0],
+    long_description='\n'.join(DOCLINES[2:]),
+    platforms=['Linux', 'Windows'],
+    classifiers=[
+        'Programming Language :: C++',
+        'Programming Language :: Python :: 2',
+        'Programming Language :: Python :: 3',
+        'Operating System :: Microsoft :: Windows',
+        'Operating System :: Unix',
+        'Topic :: Software Development :: Libraries',
+        'Topic :: Scientific/Engineering :: Image Recognition',
+        'Intended Audience :: Developers',
+        'Intended Audience :: Science/Research',
+        'Development Status :: 3 - Alpha',
+        'License :: OSI Approved :: BSD License',
+    ],
+    setup_requires=['numpy>=1.7'],
+    install_requires=['numpy>=1.7']
 )
 
 if using_setuptools:
