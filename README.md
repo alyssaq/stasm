@@ -31,6 +31,10 @@ To build from source, make sure you have the OpenCV headers and libraries in you
 $ python setup.py install
 ```
 
+## Common errors
+`ImportError: libopencv_core.so.3.4: cannot open shared object file: No such file or directory`.   
+Run: `export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib`
+
 ## Documentation
 For information specific to this wrapper, take a look at the PyStasm [API reference](http://pythonhosted.org/PyStasm). For further information about Stasm consult the [user manual](http://www.milbo.org/stasm-files/stasm4.pdf). To build the PyStasm docs:
 ```
