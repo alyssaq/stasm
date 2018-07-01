@@ -67,15 +67,16 @@ class stasm_build_ext(build_ext):
 
 metadata = dict(
     name='stasm',
-    version='1.1.0',
+    version='1.2.0',
     author='Matthew Szczepankiewicz',
     author_email='mjszczep@buffalo.edu',
 	ext_modules=[
         Extension('_stasm',
             sources = recursive_glob('src', '*.cpp'),
             depends = recursive_glob('src', '*.h'),
+            library_dirs = ['/usr/local/lib'],
             libraries = cv_libs,
-            language = 'C++',
+            language = 'C++'
         )
     ],
     headers=recursive_glob('src', '*.h') + recursive_glob('src', '*.mh'),
