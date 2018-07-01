@@ -67,7 +67,7 @@ class stasm_build_ext(build_ext):
 
 metadata = dict(
     name='stasm',
-    version='1.0.0',
+    version='1.1.0',
     author='Matthew Szczepankiewicz',
     author_email='mjszczep@buffalo.edu',
 	ext_modules=[
