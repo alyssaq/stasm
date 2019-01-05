@@ -1,7 +1,7 @@
 ﻿# stasm
 Python wrapper of Stasm for finding features in faces.
 
-This has been tested with Python 3.6.5, 3.7 and OpenCV 3.4.1, 4.0.1.
+This has been tested with Python 3.6.5, 3.7 and OpenCV 3.4.1.
 
 To use:
 `$ pip install stasm`

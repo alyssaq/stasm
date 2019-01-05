@@ -5,8 +5,8 @@ Stasm is a C++ software library for finding features in faces.
 For more information, visit http://www.milbo.users.sonic.net/stasm/
 """
 
-# To test locally: python setup.py install
-# To upload to pypi: python setup.py sdist bdist_wheel upload
+# To test locally: python setup.py sdist bdist_wheel
+# To upload to pypi: twine upload dist/*
 
 DOCLINES = __doc__.split('\n')
 
@@ -70,7 +70,7 @@ class stasm_build_ext(build_ext):
 
 metadata = dict(
     name='stasm',
-    version='2.0.0',
+    version='2.0.2',
     author='Alyssa Quek',
 	ext_modules=[
         Extension('_stasm',
