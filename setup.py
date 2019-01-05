@@ -35,11 +35,14 @@ def recursive_glob(path, match):
             matches.append(os.path.join(root, filename))
     return matches
 
+from cv2 import __version__ as cv_ver
+cv2_major = int(cv_ver.split('.')[0])
+cpp_compile_args = [] if cv2_major <= 3 else ['-std=c++11']
+
 cv_libs = ['opencv_core',
            'opencv_imgproc',
            'opencv_objdetect']
 if sys.platform == 'win32':
-    from cv2 import __version__ as cv_ver
     cv_ver = ''.join(c for c in cv_ver if c.isdigit())
     cv_libs = [lib + cv_ver for lib in cv_libs]
 
@@ -67,14 +70,15 @@ class stasm_build_ext(build_ext):
 
 metadata = dict(
     name='stasm',
-    version='1.2.0',
-    author='Matthew Szczepankiewicz',
-    author_email='mjszczep@buffalo.edu',
+    version='2.0.0',
+    author='Alyssa Quek',
 	ext_modules=[
         Extension('_stasm',
             sources = recursive_glob('src', '*.cpp'),
             depends = recursive_glob('src', '*.h'),
             library_dirs = ['/usr/local/lib'],
+            include_dirs = ['/usr/local/include', '/usr/local/Cellar/opencv/3.4.1_5/include', '/usr/local/include/opencv4'],
+            extra_compile_args = cpp_compile_args,
             libraries = cv_libs,
             language = 'C++'
         )
@@ -84,7 +88,7 @@ metadata = dict(
     packages=['stasm'],
     package_data={'stasm' : ['LICENSE.txt', os.path.join('data','*.*')]},
     include_package_data=True,
-    url='http://github.com/mjszczep/PyStasm',
+    url='http://github.com/alyssaq/stasm',
     license='Simplified BSD',
     description=DOCLINES[0],
     long_description='\n'.join(DOCLINES[2:]),
@@ -102,8 +106,8 @@ metadata = dict(
         'Development Status :: 3 - Alpha',
         'License :: OSI Approved :: BSD License',
     ],
-    setup_requires=['numpy>=1.7'],
-    install_requires=['numpy>=1.7']
+    setup_requires=['numpy>=1.10'],
+    install_requires=['numpy>=1.10']
 )
 
 if using_setuptools:

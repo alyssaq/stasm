@@ -661,7 +661,7 @@ void ImgPrintf(         // printf on image
     int thickness = MAX(1, cvRound(img.rows > 1000? 2 * fontsize: fontsize));
 
     putText(img, s, cv::Point(cvRound(x), cvRound(y)),
-            CV_FONT_HERSHEY_SIMPLEX, fontsize, ToCvColor(color), thickness);
+            cv::FONT_HERSHEY_SIMPLEX, fontsize, ToCvColor(color), thickness);
 }
 
 static byte RgbToGray( // CIE conversion to gray using integer arithmetic

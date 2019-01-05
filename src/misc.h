@@ -2,6 +2,8 @@
 //
 // Copyright (C) 2005-2013, Stephen Milborrow
 
+#include "opencv2/core/types_c.h"
+
 #ifndef STASM_MISC_H
 #define STASM_MISC_H
 
