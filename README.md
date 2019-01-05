@@ -1,10 +1,9 @@
-﻿# PyStasm
-Python wrapper for finding features in faces.
+﻿# stasm
+Python wrapper of Stasm for finding features in faces.
 
-Note: This is a fork of https://github.com/mjszczep/PyStasm to work on macOS and Linux (docker).   
-This has been tested with Python 3.6.5 and OpenCV 3.4.1.   
-The original version is [PyStasm](https://pypi.python.org/pypi/PyStasm), this is:
+This has been tested with Python 3.6.5, 3.7 and OpenCV 3.4.1, 4.0.1.
 
+To use:
 `$ pip install stasm`
 
 ## Description
@@ -17,9 +16,8 @@ landmarks = stasm.search_single(img)
 A full Python version of the minimal Stasm C++ [example](http://www.milbo.users.sonic.net/stasm/minimal.html) is located in the [documentation](http://pythonhosted.org/PyStasm).
 
 ## Requirements
-* Python (tested on 2.7, 3.6)
-* numpy >= 1.7
-* [OpenCV](http://opencv.org/) >= 3.0 (tested on 3.4.1)
+* numpy >= 1.10
+* [OpenCV](http://opencv.org/) >= 3.0
 
 ## Installation
 The recommended way to install stasm is through [PyPI](https://pypi.python.org/pypi/stasm):
